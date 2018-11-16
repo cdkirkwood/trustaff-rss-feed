@@ -1,3 +1,9 @@
 const Nurse = require('./nuse')
+const Job = require('./job')
+const Specialty = require('./specialty')
+const NurseSpecialty = require('./nurseSpecialty')
 
-module.exports = { Nurse }
+Nurse.belongsToMany(Specialty, {through: 'nurseSpecialty'})
+Specialty.belongsToMany(Nurse, {through: 'nurseSpecialty'})
+
+module.exports = { Nurse, Job, Specialty, NurseSpecialty }

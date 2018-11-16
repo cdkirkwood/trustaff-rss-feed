@@ -8,7 +8,8 @@
     "start": "nodemon index.js",
     "build-client": "webpack",
     "build-client-watch": "webpack -w",
-    "start-dev": "npm run build-client-watch & npm start"
+    "start-dev": "npm run build-client-watch & npm start",
+    "seed": "node script/seed.js"
   },
   "author": "",
   "license": "ISC",

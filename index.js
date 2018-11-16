@@ -19,7 +19,7 @@ app.use(Express.static(path.join(__dirname, 'public')))
   res.status(err.status || 500).send(err.message || 'Internal server error.')
 })
 
-db.sync()
+db.sync({force: true})
   .then(() => {
     app.listen(PORT, () => (console.log('Server is alive!')))
   })

@@ -1,6 +1,6 @@
 const XLSX = require('xlsx')
 const db = require('../db')
-const { Nurse }  = require('../db/models')
+const { Nurse } = require('../db/models')
 
 class NurseClass {
   constructor(rowNum, sheet) {
@@ -17,25 +17,23 @@ class NurseClass {
   }
 }
 
-const seed = async () => {
-  await db.sync({ force: true })
-  console.log('db synced!')
+const seedNurses = async () => {
   const sheet = XLSX.readFile('./Pipeline.xlsx').Sheets.Sheet1
   const rows = +sheet['!ref'].slice(4)
-  let chain = Promise.resolve()
-  for (let i = 2; i <= rows; i++) {
-    const nurse = new NurseClass(i, sheet)
-    chain = chain.then(() => {
-      return Nurse.create(nurse)
-        .then(() => 'nothing')
-    })
-  }
+  const rowsArr = new Array(rows + 1).fill(null)
+  let chain = Promise.resolve([])
+  await rowsArr.reduce((promise, value, index) => {
+    if (index < 2) return promise
+    const nurse = new NurseClass(index, sheet)
+    return promise.then(() => Nurse.create(nurse))
+  }, chain)
   return chain.then(() => {
     console.log('seed complete')
   })
 }
 
-seed()
+db.sync({ force: true })
+  .then(seedNurses)
   .then(() => {
     db.close()
     console.log('db connection closed')
@@ -44,3 +42,28 @@ seed()
     console.error(err.message)
     process.exitCode = 1
   })
+
+    // for (let i = 2; i <= rows; i++) {
+  //   const nurse = new NurseClass(i, sheet)
+
+  //   chain = chain.then(() => {
+  //     return Nurse.create(nurse)
+  //       .then(async (nurse) => {
+  //         console.log('whateves')
+
+  //         //)})
+  //       })
+  //   })
+  // }
+
+  // .then(async newNurse => {
+  //   await Promise.all(nurseSpecialties.map(async nurseSpecialty => {
+  //     const specialty = await Specialty.findOne({
+  //       where: { name: nurseSpecialty }
+  //     })
+  //     await NurseSpecialty.create({
+  //       nurseId: newNurse.id,
+  //       specialtyId: specialty.id
+  //     })
+  //   }))
+  // })
