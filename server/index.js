@@ -11,13 +11,13 @@ app.use(morgan('dev'))
 
 app.use(bodyParser.json())
 
-app.use(Express.static(path.join(__dirname, 'client/build')))
+app.use(Express.static(path.join(__dirname, '..', 'client/build')))
 
 app.use('/api', require('./routes'))
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build/index.html'))
-})
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'client/build/index.html'))
+// })
 
  // error handling endware
  app.use((err, req, res, next) => {
