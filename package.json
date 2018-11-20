@@ -4,17 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "build-client": "webpack",
-    "build-client-watch": "webpack -w",
-    "start-dev": "npm run build-client-watch & npm start",
+    "client": "cd client && npm start",
+    "install-client": "cd client && npm i",
+    "install-all": "npm i && npm run install-client",
+    "server": "nodemon server --watch server",
+    "start-dev": "npm run server & npm run client",
     "seed": "node script/seed.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@google/maps": "^0.5.5",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
