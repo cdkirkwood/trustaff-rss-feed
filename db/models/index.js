@@ -1,7 +1,8 @@
 const Nurse = require('./nuse')
 const Job = require('./job')
+const JobMatch = require('./jobMatch')
 
-Nurse.belongsToMany(Job, {through: 'jobMatch'})
-Job.belongsToMany(Nurse, {through: 'jobMatch'})
+Nurse.belongsToMany(Job, {through: JobMatch})
+Job.belongsToMany(Nurse, {through: JobMatch})
 
-module.exports = { Nurse, Job }
+module.exports = { Nurse, Job, JobMatch }

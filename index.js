@@ -26,4 +26,5 @@ db.sync()
   .then(() => {
     app.listen(PORT, () => (console.log('Server is alive!')))
   })
+  .catch(err => console.error(err))
 
