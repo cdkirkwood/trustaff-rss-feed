@@ -1,6 +1,6 @@
 const XLSX = require('xlsx')
-const db = require('../db')
-const { Nurse } = require('../db/models')
+const db = require('../server/db')
+const { Nurse } = require('../server/db/models')
 
 class NurseClass {
   constructor(rowNum, sheet) {
