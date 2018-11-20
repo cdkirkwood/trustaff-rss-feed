@@ -12,6 +12,9 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 
 app.use(Express.static(path.join(__dirname, 'public')))
+
+app.use('/api', require('./routes'))
+
  // error handling endware
  app.use((err, req, res, next) => {
   console.error(err)
@@ -19,7 +22,7 @@ app.use(Express.static(path.join(__dirname, 'public')))
   res.status(err.status || 500).send(err.message || 'Internal server error.')
 })
 
-db.sync({force: true})
+db.sync()
   .then(() => {
     app.listen(PORT, () => (console.log('Server is alive!')))
   })

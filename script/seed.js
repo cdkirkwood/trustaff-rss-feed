@@ -32,7 +32,7 @@ const seedNurses = async () => {
   })
 }
 
-db.sync({ force: true })
+db.sync()
   .then(seedNurses)
   .then(() => {
     db.close()
@@ -42,28 +42,3 @@ db.sync({ force: true })
     console.error(err.message)
     process.exitCode = 1
   })
-
-    // for (let i = 2; i <= rows; i++) {
-  //   const nurse = new NurseClass(i, sheet)
-
-  //   chain = chain.then(() => {
-  //     return Nurse.create(nurse)
-  //       .then(async (nurse) => {
-  //         console.log('whateves')
-
-  //         //)})
-  //       })
-  //   })
-  // }
-
-  // .then(async newNurse => {
-  //   await Promise.all(nurseSpecialties.map(async nurseSpecialty => {
-  //     const specialty = await Specialty.findOne({
-  //       where: { name: nurseSpecialty }
-  //     })
-  //     await NurseSpecialty.create({
-  //       nurseId: newNurse.id,
-  //       specialtyId: specialty.id
-  //     })
-  //   }))
-  // })

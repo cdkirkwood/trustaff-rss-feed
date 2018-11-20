@@ -13,7 +13,7 @@ const Nurse = db.define('nurse', {
     type: Sequelize.STRING
   },
   zip: {
-    type: Sequelize.INTEGER
+    type: Sequelize.STRING
   },
   distance: {
     type: Sequelize.INTEGER
