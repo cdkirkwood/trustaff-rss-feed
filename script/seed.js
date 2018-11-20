@@ -18,7 +18,7 @@ class NurseClass {
 }
 
 const seedNurses = async () => {
-  const sheet = XLSX.readFile('./Pipeline.xlsx').Sheets.Sheet1
+  const sheet = XLSX.readFile('./server/Pipeline.xlsx').Sheets.Sheet1
   const rows = +sheet['!ref'].slice(4)
   const rowsArr = new Array(rows + 1).fill(null)
   let chain = Promise.resolve([])
