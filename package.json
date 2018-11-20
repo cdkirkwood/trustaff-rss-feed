@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "client": "cd client && npm start",
+    "heroku-postbuild": "cd client && npm i && npm run build",
     "install-client": "cd client && npm i",
     "install-all": "npm i && npm run install-client",
     "server": "nodemon server --watch server",
