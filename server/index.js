@@ -11,7 +11,7 @@ app.use(morgan('dev'))
 
 app.use(bodyParser.json())
 
-app.use(Express.static(path.join(__dirname, 'public')))
+app.use(Express.static(path.join(__dirname, 'client/build')))
 
 app.use('/api', require('./routes'))
 
