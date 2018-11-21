@@ -1,0 +1,1 @@
+export { default as AllNurses } from './AllNurses'

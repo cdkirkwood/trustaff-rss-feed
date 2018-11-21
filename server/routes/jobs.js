@@ -18,11 +18,7 @@ router.post('/', asyncHandler(async (req, res, next) => {
         where: {
           id: JobRequestID[0]
         },
-        include: [{
-          model: Nurse
-        }],
         defaults: {
-          id: JobRequestID[0],
           zip: Zip[0].slice(0, 5),
           specialty: SpecialtyName[0],
           link: JobURL[0]

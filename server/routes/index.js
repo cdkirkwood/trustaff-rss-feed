@@ -8,3 +8,4 @@ router.get('/poop', (req, res, next) => {
 })
 
 router.use('/jobs', require('./jobs'))
+router.use('/nurses', require('./nurses'))
