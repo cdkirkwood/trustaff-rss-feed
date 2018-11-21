@@ -1,21 +1,16 @@
 import React, { Component } from 'react'
 import './App.css'
-import axios from 'axios'
-import { AllNurses } from './components'
+import Routes from './Routes'
 
 class App extends Component {
-
-  componentDidMount() {
-
-  }
 
   render() {
     return (
       <div className="App">
-       <AllNurses />
+        <Routes />
       </div>
     )
   }
 }
 
-export default App;
+export default App
