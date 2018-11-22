@@ -18,11 +18,14 @@ class Routes extends Component {
   }
 
   render() {
+    const { nurses } = this.state
     return (
       <Switch>
-        <Route path="/nurses" render={() => <AllNurses nurses={this.state.nurses} />} />
-        <Route path="/singlenurse" component={SingleNurse} />
-        <Route render={() => <AllNurses nurses={this.state.nurses} />} />
+        <Route exact path="/nurses" render={() => <AllNurses nurses={nurses} />} />
+        <Route path="/nurses/:id"
+          render={(props) => <SingleNurse nurses={nurses} routeProps={props}/>}
+        />
+        <Route render={() => <AllNurses nurses={nurses} />} />
       </Switch>
     )
   }

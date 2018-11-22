@@ -20,7 +20,7 @@ class AllNursesCard extends PureComponent {
               <span>{`Matches: ${nurse.jobs.length}`}</span>
             </div>}
           actionIcon={
-            <Link to="/singlenurse">
+            <Link to={`/nurses/${nurse.id}`}>
               <IconButton className={classes.icon}>
                 <InfoIcon />
               </IconButton>
