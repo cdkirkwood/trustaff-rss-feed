@@ -27,7 +27,7 @@ router.post('/', asyncHandler(async (req, res, next) => {
     }))
     const createdJobs = queriedJobs.filter(job => job[1])
     await Promise.all(createdJobs.map(job => {
-      return job[0].createMatches()
+      return job[0].createMatches(Nurse)
     }))
     const updatedJobs = await Promise.all(createdJobs.map(job => {
       return Job.findByPk(job[0].id, { include: [{all: true }] })

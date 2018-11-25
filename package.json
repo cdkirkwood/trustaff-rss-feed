@@ -10,7 +10,7 @@
     "install-all": "npm i && npm run install-client",
     "start": "node server",
     "server": "nodemon server --watch server",
-    "start-dev": "npm run start & npm run client",
+    "start-dev": "npm run server & npm run client",
     "seed": "node script/seed.js"
   },
   "author": "",

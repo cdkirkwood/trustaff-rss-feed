@@ -15,6 +15,11 @@ class Routes extends Component {
     fetch('/api/nurses')
       .then(response => response.json())
       .then(nurses => this.setState({ nurses }))
+      .then(_ => fetch('/api/jobs', {
+        method: 'POST'
+      }))
+      .then(res => res.json())
+      .then(jobs => console.log(jobs))
   }
 
   render() {

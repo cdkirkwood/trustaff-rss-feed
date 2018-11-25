@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const Nurse = require('./nuse')
 const JobMatch = require('./jobMatch')
 const { calcDistance } = require('../../helperFuncs')
 
@@ -17,7 +16,8 @@ const Job = db.define('job', {
   }
 })
 
-Job.prototype.createMatches = function() {
+Job.prototype.createMatches = function(Nurse) {
+  //console.log(Nurse)
   return Nurse.findAll({
     where:
       { specialty: this.specialty }

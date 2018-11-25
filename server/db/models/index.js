@@ -1,4 +1,4 @@
-const Nurse = require('./nuse')
+const Nurse = require('./nurse')
 const Job = require('./job')
 const JobMatch = require('./jobMatch')
 
