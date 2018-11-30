@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { AllNurses, SingleNurse } from './components'
+import { AllNurses, SingleNurse, FindMatches } from './components'
 
 
 class Routes extends Component {
@@ -15,11 +15,7 @@ class Routes extends Component {
     fetch('/api/nurses')
       .then(response => response.json())
       .then(nurses => this.setState({ nurses }))
-      .then(_ => fetch('/api/jobs', {
-        method: 'POST'
-      }))
-      .then(res => res.json())
-      .then(jobs => console.log(jobs))
+      .catch(error => console.log(error))
   }
 
   render() {
@@ -30,6 +26,7 @@ class Routes extends Component {
         <Route path="/nurses/:id"
           render={(props) => <SingleNurse nurses={nurses} routeProps={props}/>}
         />
+        <Route path="/findmatches" component={FindMatches} />
         <Route render={() => <AllNurses nurses={nurses} />} />
       </Switch>
     )

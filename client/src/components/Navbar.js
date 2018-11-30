@@ -26,6 +26,9 @@ function ButtonAppBar(props) {
           <Link to="/nurses" className={classes.nursesLink}>
             <Button color="inherit">All Nurses</Button>
           </Link>
+          <Link to="/findmatches" className={classes.nursesLink}>
+            <Button color="inherit">Find Matches</Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
