@@ -15,9 +15,13 @@ app.use(Express.static(path.join(__dirname, '..', 'client/build')))
 
 app.use('/api', require('./routes'))
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'client/build/index.html'))
-// })
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'path/to/your/index.html'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
 
  // error handling endware
  app.use((err, req, res, next) => {
