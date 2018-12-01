@@ -25,7 +25,7 @@ class AllNurses extends Component {
             <ListSubheader component="div">Nurses</ListSubheader>
           </GridListTile>
           {nurses.map(nurse => (
-            <AllNursesCard nurse={nurse} classes={classes} key={nurse.id}/>
+            <AllNursesCard nurse={nurse} jobs={nurse.jobs} classes={classes} key={nurse.id}/>
           ))}
         </GridList>
       </div>

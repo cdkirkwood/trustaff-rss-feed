@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 class AllNursesCard extends PureComponent {
   render() {
-    const { nurse, classes } = this.props
+    const { nurse, classes, jobs } = this.props
     return (
       <GridListTile className={classes.gridListTitle}>
         <img src="no-profile-picture.png" alt={nurse.title} className={classes.image} />
@@ -17,7 +17,7 @@ class AllNursesCard extends PureComponent {
             <div>
               <span>{nurse.specialty}</span>
               <br />
-              <span>{`Matches: ${nurse.jobs.length}`}</span>
+              <span>{`Matches: ${jobs.length}`}</span>
             </div>}
           actionIcon={
             <Link to={`/nurses/${nurse.id}`}>
