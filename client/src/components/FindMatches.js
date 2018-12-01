@@ -10,32 +10,27 @@ class FindMatches extends Component {
       method: 'POST'
     })
       .then(res => res.json())
-      .then(jobs => console.log(jobs))
+      .then(jobs => this.setState({ jobs }))
       .catch(error => console.log(error))
   }
 
   render() {
-    console.log('heere')
     const { jobs } = this.state
+    console.log(jobs)
     return jobs.length ?
       (
-        <ul>
-          {jobs.map(job => (
-            <li>
-              <span>{job.id}</span>
+        jobs.map(job => (
+            job.nurses.length ?
               <ul>
-              {job.nurses.length ?
-                job.nurses.map(nurse => (
+                <span>{job.id}</span>
+                {job.nurses.map(nurse => (
                   <li>
                     {nurse.name}
                   </li>
-                ))
-                : <li>no matches</li>
-              }
+                ))}
               </ul>
-            </li>
-          ))}
-        </ul>
+              : null
+        ))
       )
       : <h3>...loading</h3>
   }

@@ -4,11 +4,12 @@ const { Nurse } = require('../server/db/models')
 
 class NurseClass {
   constructor(rowNum, sheet) {
+    const zip = sheet['E' + rowNum].v.toString().length < 5 ? '0' + sheet['E' + rowNum].v : sheet['E' + rowNum].v
     this.name = sheet['A' + rowNum].v
     this.specialty = sheet['B' + rowNum].v
     this.city = sheet['C' + rowNum].v
     this.state = sheet['D' + rowNum].v
-    this.zip = sheet['E' + rowNum].v
+    this.zip = zip
     this.distance = sheet['F' + rowNum].v
     this.shiftType = sheet['G' + rowNum].v
     this.startDate = sheet['H' + rowNum].v
@@ -32,7 +33,7 @@ const seedNurses = async () => {
   })
 }
 
-db.sync()
+db.sync({force: true})
   .then(seedNurses)
   .then(() => {
     db.close()
